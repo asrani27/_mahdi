@@ -33,7 +33,7 @@ class LaporanController extends Controller
     {
         $bulan = request()->get('bulan');
         $tahun = request()->get('tahun');
-        $data = Maintenance::whereMonth('tanggal', $bulan)->whereYear('tanggal', $tahun)->get();
+        $data = Maintenance::whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->get();
 
         $pdf = PDF::loadView('superadmin.laporan.pdf_maintenance', compact('bulan', 'tahun', 'data'))->setPaper('legal');
         return $pdf->stream();
