@@ -29,21 +29,8 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-3 col-12">
-        <!-- small box -->
-        <div class="small-box bg-info">
-            <div class="inner">
-                <h3>{{$stok}}</h3>
-
-                <p>Stok</p>
-            </div>
-            <div class="icon"><i class="fas fa-shopping-cart"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
     <!-- ./col -->
-    <div class="col-lg-3 col-12">
+    <div class="col-lg-6 col-12">
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
@@ -58,21 +45,7 @@
         </div>
     </div>
     <!-- ./col -->
-    <div class="col-lg-3 col-12">
-        <!-- small box -->
-        <div class="small-box bg-warning">
-            <div class="inner">
-                <h3>{{$st}} </h3>
-
-                <p>Stok Terjual Bulan ini</p>
-            </div>
-            <div class="icon"><i class="fas fa-shopping-cart"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-12">
+    <div class="col-lg-6 col-12">
         <!-- small box -->
         <div class="small-box bg-danger">
             <div class="inner">
@@ -98,7 +71,7 @@
                             <th>No</th>
                             <th>Kode</th>
                             <th>Nama Barang</th>
-                            <th>Stok</th>
+                            <th>Harga</th>
                         </tr>
                     </thead>
                     @php
@@ -110,7 +83,7 @@
                             <td>{{$no++}}</td>
                             <td>{{$item->kode}}</td>
                             <td>{{$item->nama}}</td>
-                            <td>{{$item->stok}}</td>
+                            <td>{{number_format($item->harga)}}</td>
                         </tr>
                         @endforeach
                     </tbody>
