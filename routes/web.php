@@ -101,5 +101,8 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
     Route::get('/keranjang/delete/{id}', [KeranjangController::class, 'delete']);
     Route::post('/keranjang/editharga', [KeranjangController::class, 'updateHarga']);
     Route::get('/laporan', [LaporanController::class, 'index']);
+    Route::get('/laporan/penjualan', [LaporanController::class, 'penjualan']);
+    Route::get('/laporan/maintenance', [LaporanController::class, 'maintenance']);
+    Route::get('/laporan/service', [LaporanController::class, 'service']);
     Route::post('/laporan', [LaporanController::class, 'pdf']);
 });
