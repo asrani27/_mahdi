@@ -52,14 +52,14 @@
         @foreach ($data as $key => $item)
         <tr>
             <td>{{$key + 1}}</td>
-            <td>{{$item->tanggal}}</td>
+            <td>{{\Carbon\Carbon::parse($item->tanggal)->format('d M Y')}}</td>
             <td>{{$item->kode}}</td>
             <td>{{$item->pelanggan == null ? '': $item->pelanggan->nama}}</td>
             <td>{{$item->barang == null ? '': $item->barang->nama}}</td>
             <td>{{$item->teknisi == null ? '': $item->teknisi->nama}}</td>
             <td>{{$item->sparepart == null ? '': $item->sparepart->nama}}</td>
             <td>{{$item->kerusakan}}</td>
-            <td>{{$item->tgl_selesai}}</td>
+            <td>{{\Carbon\Carbon::parse($item->tgl_selesai)->format('d M Y')}}</td>
             <td>{{number_format($item->biaya)}}</td>
         </tr>
         @endforeach
