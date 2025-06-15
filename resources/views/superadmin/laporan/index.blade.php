@@ -15,7 +15,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <form method="post" action="/laporan" target="_blank">
+                <form method="get" action="/laporan/penjualan" target="_blank">
                     @csrf
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Bulan</label>
@@ -42,17 +42,17 @@
                         <div class="col-sm-10">
                             <select name="tahun" class="form-control" required>
                                 <option value="">-pilih-</option>
-                                <option value="2022">2022</option>
-                                <option value="2023">2023</option>
-                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <button type="submit" class='btn btn-danger' name="button" value="export">Export PDF</button>
-                            {{-- <button type="submit" class='btn btn-primary' name="button" value="detail">Detail Penjualan</button> --}}
+                            <button type="submit" class='btn btn-danger' name="button" value="export">Export
+                                PDF</button>
+                            {{-- <button type="submit" class='btn btn-primary' name="button" value="detail">Detail
+                                Penjualan</button> --}}
                         </div>
                     </div>
                 </form>
@@ -62,6 +62,116 @@
     </div>
 </div>
 
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h3 class="card-title">Laporan Transaksi Maintenance</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="get" action="/laporan/maintenance" target="_blank">
+                    @csrf
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Bulan</label>
+                        <div class="col-sm-10">
+                            <select name="bulan" class="form-control" required>
+                                <option value="">-pilih-</option>
+                                <option value="01">Januari</option>
+                                <option value="02">Februari</option>
+                                <option value="03">Maret</option>
+                                <option value="04">April</option>
+                                <option value="05">Mei</option>
+                                <option value="06">Juni</option>
+                                <option value="07">Juli</option>
+                                <option value="08">Agustus</option>
+                                <option value="09">September</option>
+                                <option value="10">Oktober</option>
+                                <option value="11">November</option>
+                                <option value="12">Desember</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tahun</label>
+                        <div class="col-sm-10">
+                            <select name="tahun" class="form-control" required>
+                                <option value="">-pilih-</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <button type="submit" class='btn btn-danger' name="button" value="export">Export
+                                PDF</button>
+                            {{-- <button type="submit" class='btn btn-primary' name="button" value="detail">Detail
+                                Penjualan</button> --}}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h3 class="card-title">Laporan Transaksi Service</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="get" action="/laporan/service" target="_blank">
+                    @csrf
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Bulan</label>
+                        <div class="col-sm-10">
+                            <select name="bulan" class="form-control" required>
+                                <option value="">-pilih-</option>
+                                <option value="01">Januari</option>
+                                <option value="02">Februari</option>
+                                <option value="03">Maret</option>
+                                <option value="04">April</option>
+                                <option value="05">Mei</option>
+                                <option value="06">Juni</option>
+                                <option value="07">Juli</option>
+                                <option value="08">Agustus</option>
+                                <option value="09">September</option>
+                                <option value="10">Oktober</option>
+                                <option value="11">November</option>
+                                <option value="12">Desember</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tahun</label>
+                        <div class="col-sm-10">
+                            <select name="tahun" class="form-control" required>
+                                <option value="">-pilih-</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <button type="submit" class='btn btn-danger' name="button" value="export">Export
+                                PDF</button>
+                            {{-- <button type="submit" class='btn btn-primary' name="button" value="detail">Detail
+                                Penjualan</button> --}}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('js')

@@ -2,10 +2,11 @@
 
 use App\Models\Barang;
 use App\Models\Satuan;
-use App\Models\Pelanggan;
-use App\Models\BarangToko;
-use App\Models\Penjualan;
 use App\Models\Teknisi;
+use App\Models\Pelanggan;
+use App\Models\Penjualan;
+use App\Models\Sparepart;
+use App\Models\BarangToko;
 
 function satuan()
 {
@@ -17,6 +18,11 @@ function penjualan()
     return Penjualan::orderBy('id', 'DESC')->get();
 }
 
+
+function sparepart()
+{
+    return Sparepart::orderBy('id', 'DESC')->get();
+}
 function teknisi()
 {
     return Teknisi::orderBy('id', 'DESC')->get();

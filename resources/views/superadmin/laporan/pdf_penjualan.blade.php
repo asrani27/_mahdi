@@ -1,149 +1,96 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta content="en-us" http-equiv="Content-Language" />
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <title>RAJA PANCING</title>
-    {{-- <style type="text/css">
-        .auto-style1 {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: x-small;
-        }
-    </style> --}}
-    <style>
-        @page {
-            margin-top: 80px;
-            margin-left: 50px;
-        }
-
-        header {
-            position: fixed;
-            top: -60px;
-            left: 0px;
-            right: 0px;
-            height: 0px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
-            /** Extra personal styles **/
-            /* background-color: #03a9f4;
-            color: white;
-            text-align: center; 
-            line-height: 35px;*/
-        }
-
-        tr,
-        th,
-            {
-            border: 2px solid #000;
-            font-size: 10px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        td {
-            font-weight: bold;
-            border: 2px solid #000;
-            font-size: 10px;
-        }
-
-        footer {
-            position: fixed;
-            bottom: -60px;
-            left: 0px;
-            right: 0px;
-            height: 50px;
-            font-size: 8px;
-            font-family: Arial, Helvetica, sans-serif;
-            /** Extra personal styles **/
-            /* background-color: #03a9f4;
-            color: white;
-            text-align: center;
-            line-height: 35px; */
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Laporan</title>
 </head>
 
 <body>
-    <header>
-        <table border="0" width="100%">
-            <tr>
-                <td style="border: 0px;" valign="top" align="center" width="100%">
-                    <span style="font-size: 18px;"><strong>RAJA PANCING</strong></span>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <p><span class="auto-style1"><strong>LAPORAN DATA PENJUALAN {{strtoupper(convertBulan($bulan))}}
-                    {{$tahun}}</strong></span>
-        </p>
-    </header>
-    <footer>
-        <hr>
-        <p>Tanggal Cetak : {{\Carbon\Carbon::now()->format('d-m-Y H:i:s')}}
-        </p>
-    </footer>
+
+    <table width="100%">
+        <tr>
+            <td width="15%">
+                {{-- <img
+                    src="data:image/jpeg;base64,{{ base64_encode(file_get_contents(public_path('admin/logo2.png'))) }}"
+                    width="100px"> --}}
+            </td>
+            <td style="text-align: center;" width="60%">
+
+                <font size="24px"><b>PT. Cahaya Kaltim Banjarmasin <br />
+                    </b></font>
+                Jl. Veteran Sungai Bilu No.331, Melayu, Kec. Banjarmasin
+                Timur, Kota Banjarmasin, Kalimantan Selatan
+            </td>
+            <td width="15%">
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <h3 style="text-align: center">LAPORAN DATA PENJUALAN
+    </h3>
     <br />
-    <main>
-        <table cellpadding="5" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Tanggal</th>
-                    <th>Nota</th>
-                    <th>Toko</th>
-                    <th>Total Modal</th>
-                    <th>Total Jual</th>
-                    <th>Laba</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                $no = 1;
-                @endphp
-                @foreach ($data as $item)
-                <tr>
-                    <td>{{$no++}}</td>
-                    <td>{{\Carbon\Carbon::parse($item->tanggal)->format('d-m-Y')}}</td>
-                    <td>{{$item->nota}}</td>
-                    <td>{{$item->toko->nama}}</td>
-                    <td>
-                        @foreach ($item->barang as $barang)
+    <table width="100%" border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Kode Transaksi</th>
+            <th>Nama Pelanggan</th>
+            <th>Detail Barang</th>
+            <th>Total</th>
+        </tr>
+        @php
+        $no =1;
+        @endphp
 
-                        {{$barang == null ? '-' : $barang->barang->nama}} : 
-                        {{$barang == null ? '-' : number_format($barang->harga_beli)}}
-                        <br/>
-                        @endforeach
-                    Total :{{number_format($item->total_modal)}}</td>
-                    <td>
-                        
-                        {{number_format($item->total)}}</td>
-                    <td>{{number_format($item->laba)}}</td>
-                </tr>
-                @endforeach
+        @foreach ($data as $key => $item)
+        <tr>
+            <td>{{$key + 1}}</td>
+            <td>{{$item->tanggal}}</td>
+            <td>{{$item->nota}}</td>
+            <td>{{$item->pelanggan == null ? '' : $item->pelanggan->nama}}</td>
+            <td>
+                <table cellpadding="5s" cellspacing="0">
+                    <tr>
+                        <td>Barang</td>
+                        <td>Jumlah</td>
+                        <td>Harga</td>
+                        <td>Total</td>
+                    </tr>
+                    @foreach ($item->penjualandetail as $item2)
+                    <tr>
+                        <td>{{$item2->barang->nama}}</td>
+                        <td>{{$item2->jumlah}}</td>
+                        <td>{{number_format($item2->harga)}}</td>
+                        <td>{{number_format($item2->total)}}</td>
+                    </tr>
+                    @endforeach
+                </table>
 
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4">TOTAL</td>
-                    <td>{{number_format($data->sum('total_modal'))}}</td>
-                    <td>{{number_format($data->sum('total'))}}</td>
-                    <td>{{number_format($data->sum('laba'))}}</td>
-                </tr>
-            </tfoot>
-        </table>
-        <br />
-        <table width="100%" border="0">
-            <tr style="border: 0px;">
-                <td width="70%" style="border: 0px;"></td>
-                <td width="30%" style="border: 0px;">
+            </td>
+            <td>{{number_format($item->total)}}</td>
+        </tr>
+        @endforeach
+    </table>
 
+    <table width="100%">
+        <tr>
+            <td width="60%"></td>
+            <td></td>
+            <td><br />{{\Carbon\Carbon::now()->translatedFormat('d F Y')}}<br />
+                Mengetahui,<br />Pimpinan<br /><br /><br />
 
-                </td>
-            </tr>
-        </table>
+                <u>-</u><br />
 
-    </main>
+            </td>
+        </tr>
+    </table>
 </body>
+
+<script>
+    window.print();
+</script>
 
 </html>
