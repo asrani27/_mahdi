@@ -72,7 +72,6 @@
                         <thead>
                             <tr style="border-top: 1px solid #dee2e6;">
                                 <th>No</th>
-                                <th>Gambar</th>
                                 <th>Kode</th>
                                 <th>Nama Barang</th>
                                 <th>Harga</th>
@@ -85,7 +84,6 @@
                             @foreach ($keranjang as $key => $item)
                             <tr>
                                 <td>{{$key + 1}}</td>
-                                <td><img src="/storage/compress/{{$item->barang->file}}" width="40px"></td>
                                 <td>{{$item->barang == null ? '' :$item->barang->kode}}</td>
                                 <td>{{$item->barang == null ? '' :$item->barang->nama}}</td>
                                 <td>Rp. {{number_format($item->harga)}}</td>

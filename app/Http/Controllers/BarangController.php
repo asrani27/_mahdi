@@ -27,40 +27,7 @@ class BarangController extends Controller
         $check = Barang::where('kode', $req->kode)->first();
         if ($check == null) {
 
-            $validator = Validator::make($req->all(), [
-                'file'  => 'mimes:jpg,png,jpeg,bmp|max:10240',
-            ]);
-
-            if ($validator->fails()) {
-                $req->flash();
-                toastr()->error('File harus Gambar dan Maks 10MB');
-                return back();
-            }
-
-            if ($req->file == null) {
-                $filename = null;
-            } else {
-                $extension = $req->file->getClientOriginalExtension();
-                $filename = uniqid() . '.' . $extension;
-
-                $image = $req->file('file');
-
-                $realPath = public_path('storage') . '/real';
-                $compressPath = public_path('storage');
-
-                $img = Image::make($image->path());
-                $img->resize(1000, 1000, function ($const) {
-                    $const->aspectRatio();
-                })->save($compressPath . '/' . $filename);
-
-                Storage::disk('public')->move($filename, '/compress/' . $filename);
-                $image->move($realPath, $filename);
-            }
-
-
-            //dd($req->all());
             $attr = $req->all();
-            $attr['file'] = $filename;
 
             Barang::create($attr);
             toastr()->success('Berhasil disimpan');
@@ -87,37 +54,6 @@ class BarangController extends Controller
         } else {
             if ($id == $check->id) {
 
-                $validator = Validator::make($req->all(), [
-                    'file'  => 'mimes:jpg,png,jpeg,bmp|max:10240',
-                ]);
-
-                if ($validator->fails()) {
-                    $req->flash();
-                    toastr()->error('File harus Gambar dan Maks 10MB');
-                    return back();
-                }
-
-                if ($req->file == null) {
-                    $filename = Barang::find($id)->file;
-                } else {
-                    $extension = $req->file->getClientOriginalExtension();
-                    $filename = uniqid() . '.' . $extension;
-
-                    $image = $req->file('file');
-
-                    $realPath = public_path('storage') . '/real';
-                    $compressPath = public_path('storage');
-
-                    $img = Image::make($image->path());
-                    $img->resize(1000, 1000, function ($const) {
-                        $const->aspectRatio();
-                    })->save($compressPath . '/' . $filename);
-
-                    Storage::disk('public')->move($filename, '/compress/' . $filename);
-                    $image->move($realPath, $filename);
-                }
-
-                $attr['file'] = $filename;
                 Barang::find($id)->update($attr);
                 toastr()->success('Berhasil diupdate');
                 return redirect('/barang');

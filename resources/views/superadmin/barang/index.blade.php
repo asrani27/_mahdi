@@ -23,7 +23,6 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Gambar</th>
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
                             <th>Satuan</th>
@@ -40,8 +39,7 @@
                         @foreach ($data as $key => $item)
                         <tr>
                             <td>{{$no++}}</td>
-                            <td><a href="/storage/real/{{$item->file}}" target="_blank"><img
-                                        src="/storage/compress/{{$item->file}}" width="50px"></a></td>
+
                             <td>{{$item->kode}}</td>
                             <td>{{$item->nama}}</td>
                             <td>{{$item->satuan->nama}}</td>

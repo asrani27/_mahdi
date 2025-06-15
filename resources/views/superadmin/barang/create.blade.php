@@ -72,12 +72,6 @@ TAMBAH BARANG
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Foto Barang</label>
-                                <div class="col-sm-10">
-                                    <input type="file" class="form-control" name="file" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-10">
                                     <button type="submit"
