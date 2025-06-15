@@ -29,17 +29,21 @@
         </tr>
     </table>
     <hr>
-    <h3 style="text-align: center">LAPORAN DATA PENJUALAN
+    <h3 style="text-align: center">LAPORAN DATA SERVICE
     </h3>
     <br />
     <table width="100%" border="1" cellpadding="5" cellspacing="0">
         <tr>
             <th>No</th>
             <th>Tanggal</th>
-            <th>Kode Transaksi</th>
-            <th>Nama Pelanggan</th>
-            <th>Detail Barang</th>
-            <th>Total</th>
+            <th>Kode service</th>
+            <th>Pelanggan</th>
+            <th>Barang</th>
+            <th>Teknisi</th>
+            <th>sparepart</th>
+            <th>kerusakan</th>
+            <th>tgl selesai</th>
+            <th>biaya</th>
         </tr>
         @php
         $no =1;
@@ -49,28 +53,14 @@
         <tr>
             <td>{{$key + 1}}</td>
             <td>{{$item->tanggal}}</td>
-            <td>{{$item->nota}}</td>
-            <td>{{$item->pelanggan == null ? '' : $item->pelanggan->nama}}</td>
-            <td>
-                <table cellpadding="5s" cellspacing="0">
-                    <tr>
-                        <td>Barang</td>
-                        <td>Jumlah</td>
-                        <td>Harga</td>
-                        <td>Total</td>
-                    </tr>
-                    @foreach ($item->penjualandetail as $item2)
-                    <tr>
-                        <td>{{$item2->barang->nama}}</td>
-                        <td>{{$item2->jumlah}}</td>
-                        <td>{{number_format($item2->harga)}}</td>
-                        <td>{{number_format($item2->total)}}</td>
-                    </tr>
-                    @endforeach
-                </table>
-
-            </td>
-            <td>{{number_format($item->total)}}</td>
+            <td>{{$item->kode}}</td>
+            <td>{{$item->pelanggan == null ? '': $item->pelanggan->nama}}</td>
+            <td>{{$item->barang == null ? '': $item->barang->nama}}</td>
+            <td>{{$item->teknisi == null ? '': $item->teknisi->nama}}</td>
+            <td>{{$item->sparepart == null ? '': $item->sparepart->nama}}</td>
+            <td>{{$item->kerusakan}}</td>
+            <td>{{$item->tgl_selesai}}</td>
+            <td>{{number_format($item->biaya)}}</td>
         </tr>
         @endforeach
     </table>

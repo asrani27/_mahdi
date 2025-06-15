@@ -29,16 +29,19 @@
         </tr>
     </table>
     <hr>
-    <h3 style="text-align: center">LAPORAN DATA PENJUALAN
+    <h3 style="text-align: center">LAPORAN DATA MAINTENANCE
     </h3>
     <br />
     <table width="100%" border="1" cellpadding="5" cellspacing="0">
         <tr>
             <th>No</th>
-            <th>Tanggal</th>
-            <th>Kode Transaksi</th>
-            <th>Nama Pelanggan</th>
-            <th>Detail Barang</th>
+            <th>Kode maintenance</th>
+            <th>Nama maintenance</th>
+            <th>Jenis</th>
+            <th>Kode Penjualan</th>
+            <th>Teknisi</th>
+            <th>Jadwal</th>
+            <th>Garansi</th>
             <th>Total</th>
         </tr>
         @php
@@ -48,29 +51,13 @@
         @foreach ($data as $key => $item)
         <tr>
             <td>{{$key + 1}}</td>
-            <td>{{$item->tanggal}}</td>
-            <td>{{$item->nota}}</td>
-            <td>{{$item->pelanggan == null ? '' : $item->pelanggan->nama}}</td>
-            <td>
-                <table cellpadding="5s" cellspacing="0">
-                    <tr>
-                        <td>Barang</td>
-                        <td>Jumlah</td>
-                        <td>Harga</td>
-                        <td>Total</td>
-                    </tr>
-                    @foreach ($item->penjualandetail as $item2)
-                    <tr>
-                        <td>{{$item2->barang->nama}}</td>
-                        <td>{{$item2->jumlah}}</td>
-                        <td>{{number_format($item2->harga)}}</td>
-                        <td>{{number_format($item2->total)}}</td>
-                    </tr>
-                    @endforeach
-                </table>
-
-            </td>
-            <td>{{number_format($item->total)}}</td>
+            <td>{{$item->kode}}</td>
+            <td>{{$item->nama}}</td>
+            <td>{{$item->jenis}}</td>
+            <td>{{$item->penjualan == null ? '' : $item->penjualan->nota}}</td>
+            <td>{{$item->teknisi == null ? '': $item->teknisi->nama}}</td>
+            <td>{{$item->jadwal}}</td>
+            <td>{{$item->garansi}}</td>
         </tr>
         @endforeach
     </table>

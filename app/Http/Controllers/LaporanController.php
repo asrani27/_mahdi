@@ -46,7 +46,7 @@ class LaporanController extends Controller
         $pdf = PDF::loadView('superadmin.laporan.pdf_service', compact('bulan', 'tahun', 'data'))->setPaper('legal');
         return $pdf->stream();
     }
-    
+
     public function pdf(Request $req)
     {
         if ($req->button == 'export') {
