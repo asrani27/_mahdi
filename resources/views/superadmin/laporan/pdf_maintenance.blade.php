@@ -42,7 +42,6 @@
             <th>Teknisi</th>
             <th>Jadwal</th>
             <th>Garansi</th>
-            <th>Total</th>
         </tr>
         @php
         $no =1;
@@ -56,7 +55,7 @@
             <td>{{$item->jenis}}</td>
             <td>{{$item->penjualan == null ? '' : $item->penjualan->nota}}</td>
             <td>{{$item->teknisi == null ? '': $item->teknisi->nama}}</td>
-            <td>{{$item->jadwal}}</td>
+            <td>{{\Carbon\Carbon::parse($item->jadwal)->format('d M Y')}}</td>
             <td>{{$item->garansi}}</td>
         </tr>
         @endforeach
